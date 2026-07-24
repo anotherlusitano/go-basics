@@ -2,8 +2,6 @@ package main
 
 import (
 	"fmt"
-
-	"epic.example/data"
 )
 
 var packageVariable = "I am a package variable\n"
@@ -16,14 +14,22 @@ func init() {
 	fmt.Println("B")
 }
 
+func calculateTax(price float32) (float32, float32) {
+	return price * 0.09, price * 0.02
+}
+
+func calculateTaxWithNames(price float32) (stateTax float32, cityTax float32) {
+	stateTax = price * 0.09
+	cityTax = price * 0.02
+	return
+}
+
 func main() {
-	const pi = 3.14
+	stateTax, cityTax := calculateTax(100)
+	stateTax2, _ := calculateTaxWithNames(100)
 
-	var hello string = "Hello, World!\n"
-
-	price := 49.9
-
-	print(hello, price, data.Pi)
+	fmt.Println(stateTax, cityTax)
+	fmt.Println(stateTax2)
 
 	printSomeData()
 }
