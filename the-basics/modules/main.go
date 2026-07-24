@@ -1,8 +1,20 @@
 package main
 
-import "epic.example/data"
+import (
+	"fmt"
+
+	"epic.example/data"
+)
 
 var packageVariable = "I am a package variable\n"
+
+func init() {
+	fmt.Println("A")
+}
+
+func init() {
+	fmt.Println("B")
+}
 
 func main() {
 	const pi = 3.14
