@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	"files.io/data"
 	"files.io/utils"
 )
 
@@ -34,4 +35,6 @@ func main() {
 	} else {
 		panic(err)
 	}
+
+	data.Test()
 }
