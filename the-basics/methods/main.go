@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"time"
 
 	"methods.com/data"
 )
@@ -22,13 +21,7 @@ func main() {
 
 	fmt.Println(goCourse)
 
-	rustWS := data.Workshop{
-		Course: data.Course{
-			Name:       "Rust for Linux",
-			Instructor: max,
-		},
-		Date: time.Now(),
-	}
+	rustWS := data.NewWorkshop("Rust", max)
 
-	fmt.Printf("%w\n", rustWS)
+	fmt.Printf("%v\n", rustWS)
 }

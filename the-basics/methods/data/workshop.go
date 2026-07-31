@@ -3,6 +3,16 @@ package data
 import "time"
 
 type Workshop struct {
-	Course Course
-	Date   time.Time
+	// Id int
+	Course
+	Date time.Time
+}
+
+func NewWorkshop(name string, instructor Instructor) Workshop {
+	w := Workshop{}
+	w.Name = name
+	// w.Id = 99
+	// w.Instructor.Id = 99
+	w.Instructor = instructor
+	return w
 }
