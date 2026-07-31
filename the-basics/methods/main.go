@@ -1,6 +1,10 @@
 package main
 
-import "methods.com/data"
+import (
+	"fmt"
+
+	"methods.com/data"
+)
 
 func main() {
 	max := data.Instructor{Id: 3, LastName: "Ronaldo"}
@@ -14,4 +18,6 @@ func main() {
 	goCourse := data.New(homer)
 
 	print(goCourse.Print())
+
+	fmt.Println(goCourse)
 }

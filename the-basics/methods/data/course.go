@@ -20,3 +20,7 @@ func New(instructor Instructor) Course {
 func (c Course) Print() string {
 	return fmt.Sprintf("%v, %v, (%d)\n", c.Name, c.Slug, c.Id)
 }
+
+func (c Course) String() string {
+	return fmt.Sprintf("--- %v --- (%v)\n", c.Name, c.Instructor.FirstName)
+}
