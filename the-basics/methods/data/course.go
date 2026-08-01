@@ -24,3 +24,7 @@ func (c Course) Print() string {
 func (c Course) String() string {
 	return fmt.Sprintf("--- %v --- (%v)\n", c.Name, c.Instructor.FirstName)
 }
+
+func (c Course) SignUp() bool {
+	return true
+}
