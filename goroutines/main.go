@@ -5,20 +5,24 @@ import (
 	"time"
 )
 
-func printMessage(text string) {
+func printMessage(text string, channel chan string) {
 	for i := 0; i < 10; i++ {
 		fmt.Println(text)
 		time.Sleep(800 * time.Millisecond)
 	}
+
+	channel <- "Done"
 }
 
 // main goroutine
 func main() {
-	go printMessage("Go! Go!")
-	go printMessage("Go! Java!")
-	printMessage("Go! Rust!")
+	channel := make(chan string)
+	// can't use this without make:
+	// var channel chan string
 
-	// if there is nothing stoping the main goroutine,
-	// it will exit before the other goroutines finish executing
-	// go printMessage("Go! Rust!")
+	go printMessage("Go! Go!", channel)
+
+	response := <-channel
+
+	fmt.Println(response)
 }
