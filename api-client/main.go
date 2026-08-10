@@ -1,9 +1,15 @@
 package main
 
-import "client.api/api"
+import (
+	"fmt"
+
+	"client.api/api"
+)
 
 func main() {
 	rate, err := api.GetRate("BTC")
+	if err != nil {
+	}
 
-	print(rate.Price, err)
+	fmt.Printf("The rate for %v is %.2f\n", rate.Currency, rate.Price)
 }

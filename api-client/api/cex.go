@@ -1,6 +1,7 @@
 package api
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
@@ -30,11 +31,18 @@ func GetRate(currency string) (*data.Rate, error) {
 		return nil, err
 	}
 
-	json := string(bodyBytes)
+	var response CEXResponse
 
-	fmt.Println(json)
+	err = json.Unmarshal(bodyBytes, &response)
+	if err != nil {
+		return nil, err
+	}
 
-	rate := data.Rate{Currency: currency, Price: 20}
+	rate := data.Rate{Currency: currency, Price: response.Bid}
+
+	// Get the JSON data
+	// son := string(bodyBytes)
+	// fmt.Println(son)
 
 	return &rate, nil
 }
