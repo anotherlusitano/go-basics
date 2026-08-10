@@ -2,12 +2,27 @@ package main
 
 import (
 	"fmt"
+	"sync"
 
 	"client.api/api"
 )
 
 func main() {
-	rate, err := api.GetRate("BTC")
+	currencies := []string{"BTC", "ETH", "BCH"}
+
+	var wg sync.WaitGroup
+
+	for _, currency := range currencies {
+		wg.Go(func() {
+			getCurrencyData(currency)
+		})
+	}
+
+	wg.Wait()
+}
+
+func getCurrencyData(currency string) {
+	rate, err := api.GetRate(currency)
 	if err != nil {
 	}
 
