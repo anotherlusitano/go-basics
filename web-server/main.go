@@ -5,6 +5,7 @@ import (
 	"html/template"
 	"net/http"
 
+	"server.web/api"
 	"server.web/data"
 )
 
@@ -27,6 +28,7 @@ func main() {
 	server := http.NewServeMux()
 	server.HandleFunc("/hello", handleHello)
 	server.HandleFunc("/template", handleTemplate)
+	server.HandleFunc("/api/exhibitions", api.Get)
 
 	fs := http.FileServer(http.Dir("./public"))
 	server.Handle("/", fs)
